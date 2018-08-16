@@ -100,6 +100,10 @@ later.schedule = function(sched) {
         if(!end) break; // last iteration valid until the end of time
         updateNextStarts(dir, schedules, schedStarts, end);
       }
+      if(new Date(startDate).getTime() > new Date(next).getTime()) {
+          loopCount++;
+          tickStarts(dir, schedules, schedStarts, next);
+      }
       // otherwise store the start date and tick the start dates
       else {
         results.push( isForward ?
