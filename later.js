@@ -658,6 +658,10 @@ later = function() {
           }
           if (!end) break;
           updateNextStarts(dir, schedules, schedStarts, end);
+        } 
+        if(new Date(startDate).getTime() > new Date(next).getTime()) {
+          loopCount++;
+          tickStarts(dir, schedules, schedStarts, next);
         } else {
           results.push(isForward ? new Date(Math.max(startDate, next)) : getStart(schedules, schedStarts, next, endDate));
           tickStarts(dir, schedules, schedStarts, next);
